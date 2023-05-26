@@ -4,7 +4,7 @@
  * tla2021.h
  *
  *  Created on: 2023.04.17.
- *      Author: jhpark (jay@nxtcorp.co.kr)
+ *      Author: jaehong park (jaehong1972@gmail.com)
  */
 
 #include "nx_config.h"
