@@ -2,7 +2,7 @@
  * tla2021.c
  *
  *  Created on: 2023.04.17.
- *      Author: jaehong park (jaehong1972@gmail.com)
+ *      Author: jaehong park (smilemacho@gmail.com)
  */
 
 #include PLATFORM_HEADER
