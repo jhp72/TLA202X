@@ -356,12 +356,6 @@ void halI2cReadBytes(uint8_t addr, uint8_t *data, uint16_t len) {
 uint16_t TLA2024_read(uint8_t mem_addr) {
     int32_t ack = -1;
 
-  /*
-    beginTransmission(addr);
-    write(mem_addr);
-    endTransmission(false);
-  */
-
     memset(_Buffer, 0, sizeof(_Buffer));
     _Buffer[0] = mem_addr;
     //_Buffer[1] = data.packet[1];
@@ -378,17 +372,6 @@ uint16_t TLA2024_read(uint8_t mem_addr) {
     halCommonDelayMilliseconds(5);
     //halCommonDelayMilliseconds(TLA2024_rateDelayTime(TLA202x_RATE_128_SPS));
 
-/*
-    requestFrom(addr, (uint8_t)2);
-    if (2 <= available()) {
-        // bring in data
-        data.packet[1] = read();
-        data.packet[0] = read();
-        uint16_t ret = data.value;
-        data.value = 0;
-        return ret;
-    }
-*/
     memset(_Buffer, 0, sizeof(_Buffer));
     ack = halI2cReadBytes(addr, _Buffer, 2);
     if (ack != I2C_DRIVER_ERR_NONE) {
@@ -430,15 +413,6 @@ int TLA2024_write(uint16_t out_data) {
     data.packet[1] = (out_data & 0xFF00) >> 8;
     data.packet[0] = out_data & 0x00FF;
 #endif
-
-/*
-    beginTransmission(addr);
-    write(confReg_);
-    written += write(data.packet[1]);
-    written += write(data.packet[0]);
-    endTransmission();
-    data.value = 0;
-*/
 
     memset(_Buffer, 0, sizeof(_Buffer));
     _Buffer[0] = confReg_;
